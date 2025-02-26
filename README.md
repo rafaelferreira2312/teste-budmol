@@ -27,4 +27,9 @@ Este é um sistema web para gerenciamento e inscrição em eventos. O sistema po
    ```
 
 ## Documentos do projeto
-- ![Documentação Budmol](https://github.com/rafaelferreira2312/teste-budmol/blob/main/documentacao/Teste%20Budmol.pdf)
+- ![Documentação Budmol](/documentacao/Teste%20Budmol.pdf)
+- ![Tela de Principal](/documentacao/tela-principal.png)
+- ![Tela de Dashboard Admin](/documentacao/dashboard-admin.png)
+- ![Tela de Cadastro de Evento Pelo Admin](/documentacao/dashboard-cadastro-evento.png)
+- ![Tela de Dashboard Participante](/documentacao/dashbord-participante.png)
+- ![Tela de Dashboard Inscrição Participante](/documentacao/dashboard_inscricao_participante.png)
