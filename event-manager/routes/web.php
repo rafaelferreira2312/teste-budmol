@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\RegistrationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,3 +30,10 @@ Route::middleware('admin')->group(function () {
 // Rotas para participantes (exemplo)
 Route::get('/events/available', [EventController::class, 'available'])->name('events.available');
 Route::post('/events/{event}/register', [EventController::class, 'register'])->name('events.register');
+
+// Rotas para inscrições
+Route::middleware('auth')->group(function () {
+    Route::get('/registrations', [RegistrationController::class, 'index'])->name('registrations.index');
+    Route::post('/events/{event}/register', [RegistrationController::class, 'store'])->name('registrations.store');
+    Route::delete('/events/{event}/unregister', [RegistrationController::class, 'destroy'])->name('registrations.destroy');
+});
