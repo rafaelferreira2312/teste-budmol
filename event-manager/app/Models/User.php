@@ -44,9 +44,10 @@ class User extends Authenticatable
     ];
 
     public function isAdmin()
-        {
-            return $this->role === 'admin';
-        }
+    {
+        return $this->role === 'admin';
+    }
+        
     public function registrations()
     {
         return $this->hasMany(Registration::class);

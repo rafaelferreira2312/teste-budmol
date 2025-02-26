@@ -1,24 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Minhas Inscrições</h1>
+    <h1 class="text-center my-4">Minhas Inscrições</h1>
+
     @if ($registrations->isEmpty())
-        <p>Você não está inscrito em nenhum evento.</p>
+        <p class="text-center">Você não está inscrito em nenhum evento.</p>
     @else
-        <ul>
+        <div class="row">
             @foreach ($registrations as $registration)
-                <li>
-                    <a href="{{ route('events.show', $registration->event->id) }}">
-                        {{ $registration->event->title }}
-                    </a>
-                    <form action="{{ route('registrations.destroy', $registration->event->id) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm">Cancelar Inscrição</button>
-                    </form>
-                </li>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $registration->event->title }}</h5>
+                            <p class="card-text">{{ $registration->event->description }}</p>
+                            <p class="card-text"><strong>Data:</strong> {{ $registration->event->start_date }} - {{ $registration->event->end_date }}</p>
+                            <p class="card-text"><strong>Local:</strong> {{ $registration->event->location }}</p>
+
+                            <form action="{{ route('registrations.destroy', $registration->event->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Cancelar Inscrição</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             @endforeach
-        </ul>
+        </div>
     @endif
-    <a href="{{ route('events.index') }}" class="btn btn-secondary">Voltar</a>
 @endsection
