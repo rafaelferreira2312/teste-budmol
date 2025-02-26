@@ -19,6 +19,6 @@ class AdminMiddleware
                 return $next($request);
             }
 
-            return redirect('/')->with('error', 'Acesso negado.');
+            return redirect('/')->with('error', 'Acesso negado. Apenas administradores podem acessar esta página.');
         }
 }

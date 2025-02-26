@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\EventController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,17 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Rotas de autenticação (geradas pelo Laravel UI)
+Auth::routes();
+
+// Rota inicial (home)
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Rotas para o CRUD de eventos (apenas para administradores)
 Route::middleware('admin')->group(function () {
-    // Rotas de administrador aqui
+    Route::resource('events', EventController::class);
 });
+
+// Rotas para participantes (exemplo)
+Route::get('/events/available', [EventController::class, 'available'])->name('events.available');
+Route::post('/events/{event}/register', [EventController::class, 'register'])->name('events.register');
